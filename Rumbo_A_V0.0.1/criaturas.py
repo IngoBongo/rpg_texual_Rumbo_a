@@ -9,7 +9,7 @@ class Enemigo(Personage):
 
         Personage.__init__(self)
         self.nombre = 'Trasgo'
-        self.salud = randint(1, jugador.salud)
+        self.salud = randint(1, jugador.salud_max)
 
 """
 {Rumbo A... pretende ser un juego textual de aventuras}

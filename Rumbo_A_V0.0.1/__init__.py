@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 {Rumbo A... pretende ser un juego textual de aventuras}
 Copyright (C) {2017}  {by Igor Iglesia Gonzalez}

@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from random import randint
+import jugador
 from jugador import Jugador
 from criaturas import Enemigo
 
-Comandos = {
-    'salir': Jugador.salir,
-    'ayuda': Jugador.ayuda,
-    'estado': Jugador.estado,
-    'descanso': Jugador.descanso,
-    'explorar': Jugador.explorar,
-    'huir': Jugador.huir,
-    'golpea': Jugador.golpea,
-    }
+comand = jugador.Comandos
 
 def main():
 
@@ -30,9 +23,9 @@ def main():
 
             comando_valido = False
 
-            for c in Comandos.keys():
+            for c in comand.keys():
                 if arg[0] == c[: len(arg[0])]:
-                    Comandos[c](jug)
+                    comand[c](jug)
                     comando_valido = True
                     break
             if not comando_valido:

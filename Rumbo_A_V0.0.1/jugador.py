@@ -2,6 +2,7 @@
 
 from random import randint
 from personage import Personage
+from criaturas import Enemigo
 
 class Jugador(Personage):
 
@@ -41,13 +42,13 @@ class Jugador(Personage):
             print "¡%s no puede descansar ahora!"% self.nombre
             self.enemigo_ataca()
         else:
-            print "%s ha conseguido descansar"% self.nombre
             if randint(0, 1):
                 self.enemigo = Enemigo(self)
-                print "¡¡%s ha sido groseramente despertado por %s!!"% (self.nombre, enemigo.nombre)
+                print "¡¡%s ha sido groseramente despertado por %s!!"% (self.nombre, self.enemigo.nombre)
                 self.modo = 'lucha'
                 self.enemigo_ataca()
             else:
+                print "%s ha conseguido descansar"% self.nombre
                 if self.salud < self.salud_max:
                     self.salud = self.salud + 1
                 else:
@@ -64,7 +65,7 @@ class Jugador(Personage):
             print "%s exlora un sinuoso páramo."% self.nombre
             if randint(0, 1):
                 self.enemigo = Enemigo(self)
-                print "%s se encuentra con un %s"% (self.nombre, enemigo.nombre)
+                print "%s se encuentra con un %s"% (self.nombre, self.enemigo.nombre)
                 self.modo = 'lucha'
             else:
                 if randint(0, 1):
@@ -108,6 +109,15 @@ class Jugador(Personage):
             print "¡¡¡%s ha sido ejecutado por %s!!!"% (self.nombre, self.enemigo.nombre)
 
 
+Comandos = {
+    'salir': Jugador.salir,
+    'ayuda': Jugador.ayuda,
+    'estado': Jugador.estado,
+    'descanso': Jugador.descanso,
+    'explorar': Jugador.explorar,
+    'huir': Jugador.huir,
+    'ataque': Jugador.ataque,
+    }
 
 """
 {Rumbo A... pretende ser un juego textual de aventuras}
