@@ -30,7 +30,7 @@ def main():
                     comando_valido = True
                     break
             if not comando_valido:
-                print "%s no entiende tu sugerencia.\n(escribe 'ayuda' para obtener una lista de obciones.)"% jug.nombre
+                print "%s no entiende tu sugerencia.\n(escribe 'ayuda' para obtener una lista de opciones.)"% jug.nombre
 
 
 if __name__ == '__main__':
