@@ -16,9 +16,9 @@ class Personage:
         enemigo.salud = enemigo.salud - golpe
 
         if golpe == 0:
-            print "El %s esquiva el ataque de %s."% (enemigo.nombre, self.nombre)
+            print "%s esquiva el ataque de %s."% (enemigo.nombre, self.nombre)
         else:
-            print "¡%s ha dañado al %s!"% (self.nombre, enemigo.nombre)
+            print "¡%s ha dañado a %s!"% (self.nombre, enemigo.nombre)
             return enemigo.salud <= 0
 
 """
