@@ -25,7 +25,8 @@ class Jugador(Personage):
 
     def salir(self):
 
-        print "%s no puede encontrar el camino de vuelta y muere de hambre.\nR.I.P."% self.nombre
+        print "%s no puede encontrar el camino de vuelta y muere de hambre."% self.nombre
+        negrita("R.I.P.")
         self.salud = 0
 
 
@@ -37,12 +38,13 @@ class Jugador(Personage):
     def estado(self):
 
         if self.modo != 'lucha':
-            print "%s SALUD: %d/%d Fuerza: %d Vel: %d"% (self.nombre, self.salud, self.salud_max,
-                self.fuerza, self.velocidad)
+            negrita("%s SALUD: %d/%d Fuerza: %d Vel: %d"% (self.nombre, self.salud, self.salud_max,
+                self.fuerza, self.velocidad))
         else:
-            print "%s SALUD: %d/%d Fuerza: %d Vel: %d\n%s SALUD: %d/%d Fuerza: %d Vel: %d\n%s"% (self.nombre, self.salud,
+            negrita("%s SALUD: %d/%d Fuerza: %d Vel: %d\n%s SALUD: %d/%d Fuerza: %d Vel: %d\n"% (self.nombre, self.salud,
                 self.salud_max,self.fuerza, self.velocidad, self.enemigo.nombre, self.enemigo.salud,
-                self.enemigo.salud_max, self.enemigo.fuerza, self.enemigo.velocidad, self.enemigo.info)
+                self.enemigo.salud_max, self.enemigo.fuerza, self.enemigo.velocidad))
+            print "%s"% self.enemigo.info
 
 
     def cansado(self):
@@ -78,7 +80,7 @@ class Jugador(Personage):
             print "¡%s está muy ocupado en estos momentos!"% self.nombre
             self.enemigo_ataca()
         else:
-            print "%s exlora un sinuoso páramo."% self.nombre
+            print "%s explora un sinuoso páramo."% self.nombre
             if randint(0, 1):
                 self.enemigo_actual()
                 print "%s se encuentra con un %s"% (self.nombre, self.enemigo.nombre)
@@ -144,6 +146,13 @@ Comandos = {
     'huir': Jugador.huir,
     'ataque': Jugador.ataque,
     }
+
+def negrita(msg):
+    #Funcion para mostrar por pantalla un string en negrita
+    print "\033[1m"+msg+"\033[0m"
+
+def linea_punteada(width=72):
+    print('-'*width)
 
 """
 {Rumbo A... pretende ser un juego textual de aventuras}

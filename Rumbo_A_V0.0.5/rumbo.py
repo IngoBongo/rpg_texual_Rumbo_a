@@ -7,12 +7,17 @@ import jugador
 from jugador import Jugador
 
 comand = jugador.Comandos
+en_negrita = jugador.negrita
+linea_puntos = jugador.linea_punteada
 
 def main():
 
     jug = Jugador()
-    jug.nombre = raw_input("¿Cual es tu nombre viager@? : ")
-    print "escribe: 'ayuda' para ver una lista de acciones.\n"
+    jug.nombre = raw_input("¿Cual es tu nombre viager@? > ")
+    en_negrita("Bienbenido %s, aquí comienza tu aventura.Espero que tengas suerte."% jug.nombre)
+    print "escribe: \033[1mayuda\033[0m, para ver una lista de acciones.\n"
+    linea_puntos()
+
     print "%s se adentra en una oscura cueva, en busca de aventuras."% jug.nombre
 
     while (jug.salud > 0):
