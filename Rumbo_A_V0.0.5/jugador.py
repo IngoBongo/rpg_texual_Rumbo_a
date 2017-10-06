@@ -37,11 +37,12 @@ class Jugador(Personage):
     def estado(self):
 
         if self.modo != 'lucha':
-            print "%s SALUD: %d/%d"% (self.nombre, self.salud, self.salud_max)
+            print "%s SALUD: %d/%d Fuerza: %d Vel: %d"% (self.nombre, self.salud, self.salud_max,
+                self.fuerza, self.velocidad)
         else:
-            print "%s SALUD: %d/%d\n%s SALUD: %d/%d\n%s"% (self.nombre, self.salud,
-                self.salud_max, self.enemigo.nombre, self.enemigo.salud,
-                self.enemigo.salud_max, self.enemigo.info)
+            print "%s SALUD: %d/%d Fuerza: %d Vel: %d\n%s SALUD: %d/%d Fuerza: %d Vel: %d\n%s"% (self.nombre, self.salud,
+                self.salud_max,self.fuerza, self.velocidad, self.enemigo.nombre, self.enemigo.salud,
+                self.enemigo.salud_max, self.enemigo.fuerza, self.enemigo.velocidad, self.enemigo.info)
 
 
     def cansado(self):
@@ -116,9 +117,13 @@ class Jugador(Personage):
                     if self.enemigo == 'Orco':
                         self.salud = self.salud + 2
                         self.salud_max = self.salud_max + 2
+                        self.fuerza = self.fuerza + 2
+                        self.velocidad = self.velocidad + 2
                     else:
                         self.salud = self.salud + 1
                         self.salud_max = self.salud_max + 1
+                        self.fuerza = self.fuerza + 1
+                        self.velocidad = self.velocidad + 1
                     print "¡%s se siente fuerte!"% self.nombre
                 self.enemigo = None
                 self.modo = 'normal'
