@@ -3,6 +3,7 @@
 from random import randint
 from personage import Personage
 from criaturas import Trasgo
+from criaturas import Orco
 
 class Jugador(Personage):
 
@@ -13,6 +14,12 @@ class Jugador(Personage):
         self.salud = 10
         self.salud_max = 10
 
+    def enemigo_actual(self):
+        rand_enemigo = randint(1,6)
+        if rand_enemigo != (5 or 6):
+            self.enemigo = Trasgo(self)
+        else:
+            self.enemigo = Orco(self)
 
     def salir(self):
 
@@ -47,8 +54,9 @@ class Jugador(Personage):
             print "¡%s no puede descansar ahora!"% self.nombre
             self.enemigo_ataca()
         else:
-            if randint(0, 1):
-                self.enemigo = Trasgo(self)
+            rand_descanso = randint(1, 3)
+            if rand_descanso == 1:
+                self.enemigo_actual()
                 print "¡¡%s ha sido groseramente despertado por un %s!!"% (self.nombre, self.enemigo.nombre)
                 self.modo = 'lucha'
                 self.enemigo_ataca()
@@ -69,11 +77,12 @@ class Jugador(Personage):
         else:
             print "%s exlora un sinuoso páramo."% self.nombre
             if randint(0, 1):
-                self.enemigo = Trasgo(self)
+                self.enemigo_actual()
                 print "%s se encuentra con un %s"% (self.nombre, self.enemigo.nombre)
                 self.modo = 'lucha'
             else:
-                if randint(0, 1):
+                rand_cansado = randint(1, 3)
+                if rand_cansado == 1:
                     self.cansado()
 
 
@@ -100,12 +109,17 @@ class Jugador(Personage):
         else:
             if self.golpea(self.enemigo):
                 print "¡%s ha derrotado al %s!"% (self.nombre, self.enemigo.nombre)
+
+                if randint(0, self.salud) < 10:
+                    if self.enemigo == 'Orco':
+                        self.salud = self.salud + 2
+                        self.salud_max = self.salud_max + 2
+                    else:
+                        self.salud = self.salud + 1
+                        self.salud_max = self.salud_max + 1
+                    print "¡%s se siente fuerte!"% self.nombre
                 self.enemigo = None
                 self.modo = 'normal'
-                if randint(0, self.salud) < 10:
-                    self.salud = self.salud + 1
-                    self.salud_max = self.salud_max + 1
-                    print "¡%s se siente fuerte!"% self.nombre
             else:
                 self.enemigo_ataca()
 
