@@ -2,7 +2,6 @@
 
 # sintaxis for Python 2.7
 
-from random import randint
 import jugador
 from jugador import Jugador
 
