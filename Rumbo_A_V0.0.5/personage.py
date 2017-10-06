@@ -9,13 +9,20 @@ class Personage:
         self.nombre = ""
         self.salud = 1
         self.salud_max = 1
+        self.velocidad = 1
+        self.fuerza = 1
 
     def golpea(self, enemigo):
 
-        golpe = min(max(randint(0, self.salud) - randint(0, enemigo.salud), 0), enemigo.salud)
-        enemigo.salud = enemigo.salud - golpe
+        golpe = False
 
-        if golpe == 0:
+        if self.velocidad + randint(1, 6) > enemigo.velocidad + randint(1, 6):
+            golpe = True
+            enemigo.salud = enemigo.salud - self.fuerza
+        else:
+            golpe = False
+
+        if golpe != True:
             print "%s esquiva el ataque de %s."% (enemigo.nombre, self.nombre)
         else:
             print "¡%s ha dañado a %s!"% (self.nombre, enemigo.nombre)

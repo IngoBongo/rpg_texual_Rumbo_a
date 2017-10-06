@@ -9,8 +9,10 @@ class Trasgo(Personage):
 
         Personage.__init__(self)
         self.nombre = 'Trasgo'
-        self.salud = randint(3, jugador.salud_max)
+        self.salud = randint(3, (jugador.salud_max - 2))
         self.salud_max = self.salud
+        self.velocidad = self.salud + 2
+        self.fuerza = self.salud / 2
         self.info = 'Una criatura pequeña y fétida\nno los menosprecies, son muy rápidos'
 
 
@@ -22,6 +24,8 @@ class Orco(Personage):
         self.nombre = 'Orco'
         self.salud = randint(8, (jugador.salud_max + 10))
         self.salud_max = self.salud
+        self.velocidad = self.salud / 2
+        self.fuerza = self.salud + 2
         self.info = 'El terror causado por su tamaño no es nada\nen comparación con la idea de ser su cena.'
 
 """

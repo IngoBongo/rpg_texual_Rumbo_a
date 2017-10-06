@@ -13,6 +13,8 @@ class Jugador(Personage):
         self.modo = 'normal'
         self.salud = 10
         self.salud_max = 10
+        self.velocidad = 8
+        self.fuerza = 8
 
     def enemigo_actual(self):
         rand_enemigo = randint(1,6)
