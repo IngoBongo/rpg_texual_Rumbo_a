@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from random import randint
+from random2 import randint
 from personage import Personage
 
 class Trasgo(Personage):
@@ -22,9 +22,9 @@ class Orco(Personage):
 
         Personage.__init__(self)
         self.nombre = 'Orco'
-        self.salud = randint(jugador.salud_max, (jugador.salud_max * 3))
+        self.salud = randint((jugador.salud_max - 4), (jugador.salud_max * 3))
         self.salud_max = self.salud
-        self.velocidad = self.salud / 2
+        self.velocidad = self.salud / 2.5
         self.fuerza = self.velocidad + 2
         self.info = 'El terror causado por su tamaño no es nada\nen comparación con la idea de ser su cena.'
 

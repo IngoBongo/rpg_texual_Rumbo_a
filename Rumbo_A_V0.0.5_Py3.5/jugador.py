@@ -2,7 +2,7 @@
 
 # sintaxis for Python 3.5
 
-from random import randint
+from random2 import randint
 from personage import Personage
 from criaturas import Trasgo
 from criaturas import Orco
@@ -99,7 +99,14 @@ class Jugador(Personage):
             print ("%s corre en circulos por un tiempo"% self.nombre)
             self.cansado()
         else:
-            if randint(1, (self.salud + 5)) > randint(1, self.enemigo.salud):
+            dado = 3
+            huye_si = randint(1, 6)
+            if self.velocidad >= self.enemigo.velocidad:
+                dado = dado - 1
+            elif self.enemigo.velocidad >= self.velocidad + 2:
+                dado = dado + 1
+                
+            if huye_si > dado:
                 print ("%s consigue huir, cobardemente, del %s."% (self.nombre, self.enemigo.nombre))
                 self.enemigo = None
                 self.modo = 'normal'
@@ -117,7 +124,7 @@ class Jugador(Personage):
             if self.golpea(self.enemigo):
                 print ("¡%s ha derrotado al %s!"% (self.nombre, self.enemigo.nombre))
 
-                if randint(0, (self.salud)) < 10:
+                if randint(0, self.salud) < 10:
                     if self.enemigo == 'Orco':
                         self.salud = self.salud + 2
                         self.salud_max = self.salud_max + 2

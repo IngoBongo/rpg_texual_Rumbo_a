@@ -2,7 +2,7 @@
 
 # sintaxis for Python 3.5
 
-from random import randint
+from random2 import randint
 
 class Personage:
     # cualidades generales
